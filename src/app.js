@@ -5,12 +5,21 @@ var express = require('express'),
 
 var app = express();
 
+app.set('view engine', 'pug');
+app.set('views', __dirname + '/templates');
+
 app.get('/', function(req, res){
-  res.send('<h1>Too good ting</h1>');
+  res.render('index');
 });
 
-app.get('/blog', function(req, res){
-  res.send(posts);
+app.get('/blog/:title?', function(req, res){
+  var title = req.params.title;
+  if (title === undefined) {
+    res.status(503);
+    res.send("<h2>Sorry still building</h2>")
+  }
+  var post = posts[title];
+  res.send(post);
 });
 
 app.listen(3000, function(){
