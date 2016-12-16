@@ -18,7 +18,7 @@ app.get('/blog/:title?', function(req, res){
   var title = req.params.title;
   if (title === undefined) {
     res.status(503);
-    res.send("<h2>Sorry still building</h2>")
+    res.send('<h2>Still building this</h2>')
   }
   var post = posts[title] || {};
   res.render('post', {post: post});
