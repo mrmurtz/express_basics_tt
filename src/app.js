@@ -18,8 +18,8 @@ app.get('/blog/:title?', function(req, res){
     res.status(503);
     res.send("<h2>Sorry still building</h2>")
   }
-  var post = posts[title];
-  res.send(post);
+  var post = posts[title] || {};
+  res.render('post', {post: post});
 });
 
 app.listen(3000, function(){
