@@ -1,7 +1,10 @@
 'use strict';
 
 var express = require('express'),
-      posts = require('./mock/posts.json');
+      posts = require('./mock/posts.json'),
+      request = require('request'),
+      async = require('async'),
+      config = require('./config.js');
 
 var postsList = Object.keys(posts).map(function(value){
   return posts[value]
