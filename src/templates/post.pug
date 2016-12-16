@@ -1,19 +1,14 @@
-doctype html
-html(lang="en")
-  head
-    title Post Page
-  body
-    section.post
-      .container.text-right
-      a(href="").text-faded view all
+extends ./layout.pug
+block content
+  section.post
+    .container
       .row
-      .col-lg-8.col-lg-offset-2.text-center
-        h2.section-heading I like to run!
-
-        hr.light
-
-        p.text-faded
-          | This is some decent paragraph content
-
-        .article
-          | This is some decent paragraph content
+        .col-lg-8.col-lg-offset-2.text-center
+          h2.section-heading #{post.title}
+          
+          hr.light
+          
+          p.text-faded
+            | #{post.description}
+          .article
+            | #{post.description}

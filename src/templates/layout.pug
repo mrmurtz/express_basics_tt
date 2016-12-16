@@ -1,6 +1,17 @@
 doctype html
-html
-  head
-    title Default title
-  body
-    block content
+
+html(lang="en")
+  include ./partials/_head.pug
+  
+  body#page-top
+      include ./partials/_nav.pug
+      block content
+        script(src='/static/js/jquery.js')
+        // bootstrap core js
+        script(src='/static/js/bootstrap.min.js')
+        // plugins js
+        script(src='/static/js/jquery.easing.min.js')
+        script(src='/static/js/jquery.fittext.js')
+        script(src='/static/js/wow.min.js')
+        // customer theme js
+        script(src='/static/js/creative.js')

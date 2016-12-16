@@ -5,6 +5,8 @@ var express = require('express'),
 
 var app = express();
 
+app.use('/static', express.static(__dirname + '/public'));
+
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/templates');
 
@@ -16,10 +18,10 @@ app.get('/blog/:title?', function(req, res){
   var title = req.params.title;
   if (title === undefined) {
     res.status(503);
-    res.send("<h2>Sorry still building</h2>")
+    res.send('<h2>Still building this</h2>')
   }
-  var post = posts[title];
-  res.send(post);
+  var post = posts[title] || {};
+  res.render('post', {post: post});
 });
 
 app.listen(3000, function(){
